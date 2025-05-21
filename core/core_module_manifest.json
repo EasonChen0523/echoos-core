@@ -1,0 +1,38 @@
+[
+  {
+    "module": "echoos_kernel",
+    "phase": "VI",
+    "status": "implemented",
+    "description": "Core dispatcher and execution router for semantic operations."
+  },
+  {
+    "module": "echoos_promptsystem",
+    "phase": "VI",
+    "status": "implemented",
+    "description": "System-level prompt modifier and structure injector."
+  },
+  {
+    "module": "echoos_moduleconfinement",
+    "phase": "VI",
+    "status": "implemented",
+    "description": "Restricts semantic operator execution by context and phase."
+  },
+  {
+    "module": "echoos_modulerecovery",
+    "phase": "VI",
+    "status": "implemented",
+    "description": "Recovers from failed operator runs and selects fallback logic."
+  },
+  {
+    "module": "echoos_executionnode",
+    "phase": "VI",
+    "status": "implemented",
+    "description": "Executes a single semantic operator call with trace data."
+  },
+  {
+    "module": "echoos_crisisdetection",
+    "phase": "VI",
+    "status": "implemented",
+    "description": "Detects tone volatility and emotional anomalies in semantic traces."
+  }
+]
