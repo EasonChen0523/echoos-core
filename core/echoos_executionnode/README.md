@@ -1,20 +1,55 @@
-# echoos_executionnode
 
-## 模組名稱：
-echoos_executionnode
+# EchoOS Core Module – echoos_executionnode
 
-## 封存階段：
-Phase VI – 系統級模組語義實作
+This module represents a runtime execution unit that invokes a semantic operator on a given trace.
 
-## 語義偏移狀態：
-- context_digest: EchoOS_construction_2025_05_18
-- source_origin: Felis Origin Reboot
-- semantic_shift_type: 結構強化
+---
 
-## 模組功能簡述：
-模組執行節點追蹤器，用於記錄模組啟動源、執行順序與時序狀態。
+## 🧠 Purpose
 
-## 封存結構包含：
-- `.OperatorSpec_echoos_executionnode.md`：語義模組規格書
-- `echoos_executionnode.py`：模組運行邏輯骨架
-- `echoos_executionnode.trace.template.jsonl`：輸入樣板
+Encapsulates a single semantic operation including trace input, call execution, and result output.  
+It is the atomic unit of EchoOS execution flow.
+
+---
+
+## ✅ Capabilities
+
+- Invokes a specified semantic operator
+- Processes trace input and generates output trace
+- Supports future hooks for execution context and audit
+
+---
+
+## 🧪 Example Input
+
+```json
+{
+  "operator": "× FILTER.NOISE",
+  "trace": [{"id": "s_005", "text": "uh well I guess we go"}]
+}
+```
+
+---
+
+## ✅ Output
+
+```json
+{
+  "status": "success",
+  "output_trace": [{"id": "s_005", "filtered": "we go"}]
+}
+```
+
+---
+
+## 📄 Related Files
+
+- `OperatorSpec_echoos_executionnode.md`
+- `echoos_executionnode.py`
+- `echoos_executionnode.trace.template.jsonl`
+
+---
+
+## 🗂 Directory
+
+`/core/`

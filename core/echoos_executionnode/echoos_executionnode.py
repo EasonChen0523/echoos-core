@@ -1,9 +1,17 @@
 
 # echoos_executionnode.py
-# EchoOS Phase VI Module: echoos_executionnode
-# 語義模組實作骨架（自動生成）
+# EchoOS Phase VI Module – echoos_executionnode
+# Node for dispatching a semantic operator invocation
 
-def run(echoos_executionnode_input):
-    # TODO: 實作模組主流程
-    print("Running echoos_executionnode...")
-    return {"status": "ok", "module": "echoos_executionnode"}
+def run(input):
+    op = input.get("operator")
+    trace = input.get("trace", [])
+    filtered = []
+    for seg in trace:
+        text = seg.get("text", "")
+        clean = " ".join([w for w in text.split() if w.lower() not in {"uh", "well", "i", "guess"}])
+        filtered.append({"id": seg.get("id"), "filtered": clean})
+    return {
+        "status": "success",
+        "output_trace": filtered
+    }

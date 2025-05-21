@@ -1,35 +1,56 @@
 
-# .OperatorSpec_echoos_executionnode.md
+# OperatorSpec_echoos_executionnode.md
 
-## 封存時間：
-2025/05/18 20:35（Asia/Taipei）
+## Archive Time:
+2025/05/21 17:20 (Asia/Taipei)
 
-## 對談來源：
-context_digest: EchoOS_construction_2025_05_18  
-source_origin: Felis Origin Reboot  
-semantic_shift_type: 結構強化
-
----
-
-## 模組名稱：
+## Module Name:
 echoos_executionnode
 
-## 模組功能摘要：
-本模組為 Phase VI 中定義之系統級語義模組，現進入 Phase IX 完整實作。
-
-## 輸入格式範例：
-請參考 `echoos_executionnode.trace.template.jsonl`
-
-## 輸出格式預期：
-jsonl / trigger status / trace log（依模組屬性而異）
-
-## 模組主要任務：
-（此區可於後續擴寫至實作細節）
-
-## 關聯模組與呼叫鏈：
-可由 `× KERNEL`, `× TRACE`, 或 persona module 呼叫啟動
-
-## 實作路徑：
-/core/echoos_executionnode.py
+## Phase:
+Phase VI – Core Module
 
 ---
+
+## Function Description:
+
+This module represents a runtime invocation point for a semantic operator, bound to a specific execution context.  
+It is the unit of execution that triggers an operator with input and records output.
+
+---
+
+## Capabilities:
+
+- Encapsulates operator call, input trace, and metadata
+- Logs invocation time and context
+- Returns result with success/failure flags
+- Supports per-node debugging and status tracking
+
+---
+
+## Input Format:
+```json
+{
+  "operator": "× FILTER.NOISE",
+  "trace": [
+    {"id": "s_005", "text": "uh well I guess we go", "tone_vector": [0.3, 0.4, 0.2]}
+  ]
+}
+```
+
+---
+
+## Output Format:
+```json
+{
+  "status": "success",
+  "output_trace": [
+    {"id": "s_005", "filtered": "we go"}
+  ]
+}
+```
+
+---
+
+## Implementation Path:
+`/core/echoos_executionnode.py`
