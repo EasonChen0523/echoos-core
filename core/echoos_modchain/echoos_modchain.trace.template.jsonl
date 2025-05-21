@@ -1,0 +1,1 @@
+{"chain": [{"op": "× FILTER.NOISE", "trace_path": "trace_step1.jsonl"}, {"op": "× EDGE", "trace_path": "trace_step2.jsonl"}]}
