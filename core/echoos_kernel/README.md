@@ -1,41 +1,57 @@
 
-# EchoOS /core/ Modules
+# EchoOS Core Module – echoos_kernel
 
-This directory contains the core execution modules of the EchoOS semantic operating system.  
-Each module defines a fundamental semantic mechanism within the EchoOS runtime and is registered as part of Phase VI.
-
----
-
-## 📦 Modules Included
-
-| Module Name         | Description                                                                 |
-|---------------------|-----------------------------------------------------------------------------|
-| `echoos_kernel`     | Semantic runtime nucleus. Dispatches trace input to appropriate operators. |
-| `echoos_promptsystem` | (To be defined) Handles system-level prompt injection and modulation.      |
-| `echoos_tracehub`   | (To be defined) Core trace I/O handler and segment archival interface.     |
-| `echoos_modchain`   | (To be defined) Manages module chaining logic and flow control.            |
-| `echoos_personaapi` | (To be defined) Interface layer for persona access and modulation control. |
+This module acts as the dispatch nucleus of EchoOS, handling semantic routing and module triggering.
 
 ---
 
 ## 🧠 Purpose
 
-Each module in `/core/` is a lightweight, single-responsibility semantic operator.  
-They form the foundational substrate for higher-phase orchestration (e.g., Phase VII/VIII).
+`echoos_kernel` manages operator invocation at the semantic execution layer.  
+It dispatches trace-based operations and bridges the flow of execution between modules.
 
 ---
 
-## 📂 Structure
+## ✅ Capabilities
 
-Each module includes:
-
-- `OperatorSpec_echoos_<name>.md` → Specification and usage format
-- `echoos_<name>.py` → Executable Python module logic
-- `echoos_<name>.trace.template.jsonl` → Sample input for testing and validation
+- Loads operator requests with associated trace
+- Routes execution input to appropriate module
+- Central access point for all semantic operators
+- May serve as the runtime nucleus for orchestrated module flows
 
 ---
 
-## ✅ Module Readiness
+## 🧪 Example Input
 
-Modules marked as **implemented** contain real logic and support trace input simulation.
+```json
+{
+  "op": "× EDGE",
+  "trace_path": "traces/sample.trace.jsonl"
+}
+```
 
+---
+
+## ✅ Output
+
+```json
+{
+  "status": "executed",
+  "op": "× EDGE",
+  "result_trace": [...]
+}
+```
+
+---
+
+## 📄 Related Files
+
+- `OperatorSpec_echoos_kernel.md`
+- `echoos_kernel.py`
+- `echoos_kernel.trace.template.jsonl`
+
+---
+
+## 🗂 Directory
+
+`/core/`
