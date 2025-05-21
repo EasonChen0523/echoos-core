@@ -1,0 +1,42 @@
+{
+  "flow_name": "echoos_phase_ix_test_chain_001",
+  "description": "Test sequence chaining Phase VI + VIII modules",
+  "steps": [
+    {
+      "module": "echoos_promptsystem",
+      "input": {
+        "text": "extract summary from conversation",
+        "mode": "brief"
+      }
+    },
+    {
+      "module": "filter_noise",
+      "input": {
+        "text": "[SYSTEM:MODE=brief]\\nextract summary from conversation"
+      }
+    },
+    {
+      "module": "echoos_crisisdetection",
+      "input": {
+        "trace": [
+          {
+            "id": "t01",
+            "tone_vector": [
+              0.1,
+              0.9,
+              0.15
+            ]
+          },
+          {
+            "id": "t02",
+            "tone_vector": [
+              0.85,
+              0.3,
+              0.8
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
