@@ -1,9 +1,16 @@
 
 # echoos_crisisdetection.py
-# EchoOS Phase VI Module: echoos_crisisdetection
-# 語義模組實作骨架（自動生成）
+# EchoOS Phase VI Module – echoos_crisisdetection
+# Detects semantic anomaly zones in trace input
 
-def run(echoos_crisisdetection_input):
-    # TODO: 實作模組主流程
-    print("Running echoos_crisisdetection...")
-    return {"status": "ok", "module": "echoos_crisisdetection"}
+def run(input):
+    crisis_ids = []
+    trace = input.get("trace", [])
+    for seg in trace:
+        vec = seg.get("tone_vector", [])
+        if any(abs(v - vec[i-1]) > 0.6 for i, v in enumerate(vec[1:], 1)):
+            crisis_ids.append(seg.get("id"))
+    return {
+        "status": "crisis_detected" if crisis_ids else "normal",
+        "crisis_ids": crisis_ids
+    }

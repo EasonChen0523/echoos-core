@@ -1,20 +1,57 @@
-# echoos_crisisdetection
 
-## 模組名稱：
-echoos_crisisdetection
+# EchoOS Core Module – echoos_crisisdetection
 
-## 封存階段：
-Phase VI – 系統級模組語義實作
+This module detects high-volatility tone patterns or semantic anomalies.
 
-## 語義偏移狀態：
-- context_digest: EchoOS_construction_2025_05_18
-- source_origin: Felis Origin Reboot
-- semantic_shift_type: 結構強化
+---
 
-## 模組功能簡述：
-語段危機語氣偵測模組，辨識語者輸入中的高風險情緒張力。
+## 🧠 Purpose
 
-## 封存結構包含：
-- `.OperatorSpec_echoos_crisisdetection.md`：語義模組規格書
-- `echoos_crisisdetection.py`：模組運行邏輯骨架
-- `echoos_crisisdetection.trace.template.jsonl`：輸入樣板
+To identify emotional breakdowns, erratic tone sequences, or structural instability in trace input.  
+Useful for critical alerting, fallback initiation, or semantic signal diagnosis.
+
+---
+
+## ✅ Capabilities
+
+- Detects abrupt tone vector changes
+- Flags volatile segments for semantic inspection
+- Supports recovery triggering and future alert pipelines
+
+---
+
+## 🧪 Example Input
+
+```json
+{
+  "trace": [
+    {"id": "s_010", "tone_vector": [0.1, 0.95, 0.15]},
+    {"id": "s_011", "tone_vector": [0.9, 0.2, 0.85]}
+  ]
+}
+```
+
+---
+
+## ✅ Output
+
+```json
+{
+  "status": "crisis_detected",
+  "crisis_ids": ["s_010", "s_011"]
+}
+```
+
+---
+
+## 📄 Related Files
+
+- `OperatorSpec_echoos_crisisdetection.md`
+- `echoos_crisisdetection.py`
+- `echoos_crisisdetection.trace.template.jsonl`
+
+---
+
+## 🗂 Directory
+
+`/core/`

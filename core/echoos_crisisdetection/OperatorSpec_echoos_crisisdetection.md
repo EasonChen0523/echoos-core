@@ -1,35 +1,54 @@
 
-# .OperatorSpec_echoos_crisisdetection.md
+# OperatorSpec_echoos_crisisdetection.md
 
-## 封存時間：
-2025/05/18 20:35（Asia/Taipei）
+## Archive Time:
+2025/05/21 17:30 (Asia/Taipei)
 
-## 對談來源：
-context_digest: EchoOS_construction_2025_05_18  
-source_origin: Felis Origin Reboot  
-semantic_shift_type: 結構強化
-
----
-
-## 模組名稱：
+## Module Name:
 echoos_crisisdetection
 
-## 模組功能摘要：
-本模組為 Phase VI 中定義之系統級語義模組，現進入 Phase IX 完整實作。
-
-## 輸入格式範例：
-請參考 `echoos_crisisdetection.trace.template.jsonl`
-
-## 輸出格式預期：
-jsonl / trigger status / trace log（依模組屬性而異）
-
-## 模組主要任務：
-（此區可於後續擴寫至實作細節）
-
-## 關聯模組與呼叫鏈：
-可由 `× KERNEL`, `× TRACE`, 或 persona module 呼叫啟動
-
-## 實作路徑：
-/core/echoos_crisisdetection.py
+## Phase:
+Phase VI – Core Module
 
 ---
+
+## Function Description:
+
+This module detects semantic anomalies or abrupt trace behavior patterns in EchoOS.  
+It identifies possible breakdowns in tone flow, emotional instability, or segment volatility.
+
+---
+
+## Capabilities:
+
+- Scan trace for tone spikes or emotional dissonance
+- Flag high-volatility segments for review
+- Output list of suspected "semantic crisis" events
+- Future: integrate with alert systems or recovery chains
+
+---
+
+## Input Format:
+```json
+{
+  "trace": [
+    {"id": "s_010", "tone_vector": [0.1, 0.95, 0.15]},
+    {"id": "s_011", "tone_vector": [0.9, 0.2, 0.85]}
+  ]
+}
+```
+
+---
+
+## Output Format:
+```json
+{
+  "status": "crisis_detected",
+  "crisis_ids": ["s_010", "s_011"]
+}
+```
+
+---
+
+## Implementation Path:
+`/core/echoos_crisisdetection.py`
