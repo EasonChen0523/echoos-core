@@ -1,35 +1,52 @@
 
-# .OperatorSpec_echoos_moduleconfinement.md
+# OperatorSpec_echoos_moduleconfinement.md
 
-## 封存時間：
-2025/05/18 20:35（Asia/Taipei）
+## Archive Time:
+2025/05/21 17:00 (Asia/Taipei)
 
-## 對談來源：
-context_digest: EchoOS_construction_2025_05_18  
-source_origin: Felis Origin Reboot  
-semantic_shift_type: 結構強化
-
----
-
-## 模組名稱：
+## Module Name:
 echoos_moduleconfinement
 
-## 模組功能摘要：
-本模組為 Phase VI 中定義之系統級語義模組，現進入 Phase IX 完整實作。
-
-## 輸入格式範例：
-請參考 `echoos_moduleconfinement.trace.template.jsonl`
-
-## 輸出格式預期：
-jsonl / trigger status / trace log（依模組屬性而異）
-
-## 模組主要任務：
-（此區可於後續擴寫至實作細節）
-
-## 關聯模組與呼叫鏈：
-可由 `× KERNEL`, `× TRACE`, 或 persona module 呼叫啟動
-
-## 實作路徑：
-/core/echoos_moduleconfinement.py
+## Phase:
+Phase VI – Core Module
 
 ---
+
+## Function Description:
+
+This module defines and enforces boundaries for semantic module execution.  
+It restricts operator invocation based on phase, context, or identity tags.
+
+---
+
+## Capabilities:
+
+- Enforce phase-based module access control
+- Prevent execution of unauthorized operators
+- Apply context-aware semantic restrictions
+- Provide a safety layer for critical operator chains
+
+---
+
+## Input Format:
+```json
+{
+  "op": "× PROJECT(N)",
+  "phase": "VIII"
+}
+```
+
+---
+
+## Output Format:
+```json
+{
+  "allowed": false,
+  "reason": "Operator not allowed in phase VIII"
+}
+```
+
+---
+
+## Implementation Path:
+`/core/echoos_moduleconfinement.py`

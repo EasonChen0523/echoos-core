@@ -1,20 +1,55 @@
-# echoos_moduleconfinement
 
-## 模組名稱：
-echoos_moduleconfinement
+# EchoOS Core Module – echoos_moduleconfinement
 
-## 封存階段：
-Phase VI – 系統級模組語義實作
+This module enforces access boundaries for semantic operator execution.
 
-## 語義偏移狀態：
-- context_digest: EchoOS_construction_2025_05_18
-- source_origin: Felis Origin Reboot
-- semantic_shift_type: 結構強化
+---
 
-## 模組功能簡述：
-模組隔離與語義孤島監控器，偵測不再活化的模組鏈並予以封存。
+## 🧠 Purpose
 
-## 封存結構包含：
-- `.OperatorSpec_echoos_moduleconfinement.md`：語義模組規格書
-- `echoos_moduleconfinement.py`：模組運行邏輯骨架
-- `echoos_moduleconfinement.trace.template.jsonl`：輸入樣板
+To ensure semantic operators only run under authorized contexts or phase conditions.  
+Used for constraint-driven scheduling and modular isolation.
+
+---
+
+## ✅ Capabilities
+
+- Defines blocked operators per phase
+- Prevents misuse of critical operators
+- Maintains structural semantic integrity
+
+---
+
+## 🧪 Example Input
+
+```json
+{
+  "op": "× PROJECT(N)",
+  "phase": "VIII"
+}
+```
+
+---
+
+## ✅ Output
+
+```json
+{
+  "allowed": false,
+  "reason": "Operator not allowed in phase VIII"
+}
+```
+
+---
+
+## 📄 Related Files
+
+- `OperatorSpec_echoos_moduleconfinement.md`
+- `echoos_moduleconfinement.py`
+- `echoos_moduleconfinement.trace.template.jsonl`
+
+---
+
+## 🗂 Directory
+
+`/core/`
