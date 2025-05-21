@@ -1,1 +1,1 @@
-{"input_id": "sample_001", "source": "echoos_modulerecovery", "payload": {"example_field": "value", "note": "此為模組輸入樣板，請根據模組調整"}}
+{"op": "× EDGE", "status": "failed", "original_trace": [{"id": "s_004", "text": "Sudden shifts occurred.", "tone_vector": [0.8, 0.4, 0.9]}]}
