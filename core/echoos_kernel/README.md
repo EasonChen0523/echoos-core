@@ -1,20 +1,41 @@
-# echoos_kernel
 
-## 模組名稱：
-echoos_kernel
+# EchoOS /core/ Modules
 
-## 封存階段：
-Phase VI – 系統級模組語義實作
+This directory contains the core execution modules of the EchoOS semantic operating system.  
+Each module defines a fundamental semantic mechanism within the EchoOS runtime and is registered as part of Phase VI.
 
-## 語義偏移狀態：
-- context_digest: EchoOS_construction_2025_05_18
-- source_origin: Felis Origin Reboot
-- semantic_shift_type: 結構強化
+---
 
-## 模組功能簡述：
-核心調度模組，用於語義運算元的排序、啟動與記憶流控制。
+## 📦 Modules Included
 
-## 封存結構包含：
-- `.OperatorSpec_echoos_kernel.md`：語義模組規格書
-- `echoos_kernel.py`：模組運行邏輯骨架
-- `echoos_kernel.trace.template.jsonl`：輸入樣板
+| Module Name         | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `echoos_kernel`     | Semantic runtime nucleus. Dispatches trace input to appropriate operators. |
+| `echoos_promptsystem` | (To be defined) Handles system-level prompt injection and modulation.      |
+| `echoos_tracehub`   | (To be defined) Core trace I/O handler and segment archival interface.     |
+| `echoos_modchain`   | (To be defined) Manages module chaining logic and flow control.            |
+| `echoos_personaapi` | (To be defined) Interface layer for persona access and modulation control. |
+
+---
+
+## 🧠 Purpose
+
+Each module in `/core/` is a lightweight, single-responsibility semantic operator.  
+They form the foundational substrate for higher-phase orchestration (e.g., Phase VII/VIII).
+
+---
+
+## 📂 Structure
+
+Each module includes:
+
+- `OperatorSpec_echoos_<name>.md` → Specification and usage format
+- `echoos_<name>.py` → Executable Python module logic
+- `echoos_<name>.trace.template.jsonl` → Sample input for testing and validation
+
+---
+
+## ✅ Module Readiness
+
+Modules marked as **implemented** contain real logic and support trace input simulation.
+

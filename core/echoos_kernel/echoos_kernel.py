@@ -1,9 +1,23 @@
 
 # echoos_kernel.py
-# EchoOS Phase VI Module: echoos_kernel
-# 語義模組實作骨架（自動生成）
+# EchoOS Phase VI Module – echoos_kernel
+# Semantic runtime dispatcher and modular router
 
-def run(echoos_kernel_input):
-    # TODO: 實作模組主流程
-    print("Running echoos_kernel...")
-    return {"status": "ok", "module": "echoos_kernel"}
+import json
+
+def run(input):
+    op = input.get("op")
+    trace_path = input.get("trace_path")
+    try:
+        with open(trace_path, "r", encoding="utf-8") as f:
+            trace = [json.loads(line) for line in f.readlines()]
+    except:
+        return {"status": "error", "reason": "invalid trace file"}
+
+    # Simulated dispatch response
+    result = {
+        "status": "executed",
+        "op": op,
+        "result_trace": trace
+    }
+    return result
