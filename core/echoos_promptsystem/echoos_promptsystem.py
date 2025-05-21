@@ -1,9 +1,12 @@
 
 # echoos_promptsystem.py
-# EchoOS Phase VI Module: echoos_promptsystem
-# 語義模組實作骨架（自動生成）
+# EchoOS Phase VI Module – echoos_promptsystem
+# System prompt formatter and semantic enhancer
 
-def run(echoos_promptsystem_input):
-    # TODO: 實作模組主流程
-    print("Running echoos_promptsystem...")
-    return {"status": "ok", "module": "echoos_promptsystem"}
+def run(input):
+    text = input.get("text", "")
+    mode = input.get("mode", "default")
+    prefix = f"[SYSTEM:MODE={mode}]"
+    return {
+        "transformed": f"{prefix}\n{text}"
+    }

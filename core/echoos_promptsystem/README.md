@@ -1,20 +1,54 @@
-# echoos_promptsystem
 
-## 模組名稱：
-echoos_promptsystem
+# EchoOS Core Module – echoos_promptsystem
 
-## 封存階段：
-Phase VI – 系統級模組語義實作
+This module handles system-level prompt pre-processing and formatting in the EchoOS runtime.
 
-## 語義偏移狀態：
-- context_digest: EchoOS_construction_2025_05_18
-- source_origin: Felis Origin Reboot
-- semantic_shift_type: 結構強化
+---
 
-## 模組功能簡述：
-負責將自然語言 prompt 解譯為 EchoOS 可執行的語義模組命令。
+## 🧠 Purpose
 
-## 封存結構包含：
-- `.OperatorSpec_echoos_promptsystem.md`：語義模組規格書
-- `echoos_promptsystem.py`：模組運行邏輯骨架
-- `echoos_promptsystem.trace.template.jsonl`：輸入樣板
+The promptsystem acts as a gateway between raw user input and semantic operator modules.  
+It injects structural hints, semantic mode tags, and prepares the prompt for modulation or execution.
+
+---
+
+## ✅ Capabilities
+
+- Wraps input text with system-level semantic tags
+- Supports mode-based formatting (e.g. "brief", "formal")
+- Optionally injects pre-context for trace routing
+
+---
+
+## 🧪 Example Input
+
+```json
+{
+  "text": "summarize the conversation",
+  "mode": "brief"
+}
+```
+
+---
+
+## ✅ Output
+
+```json
+{
+  "transformed": "[SYSTEM:MODE=brief]\nsummarize the conversation"
+}
+```
+
+---
+
+## 📄 Related Files
+
+- `OperatorSpec_echoos_promptsystem.md`
+- `echoos_promptsystem.py`
+- `echoos_promptsystem.trace.template.jsonl`
+
+---
+
+## 🗂 Directory
+
+`/core/`
