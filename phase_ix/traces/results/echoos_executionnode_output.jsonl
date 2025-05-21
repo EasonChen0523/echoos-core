@@ -1,0 +1,1 @@
+{"module": "echoos_executionnode", "input": {"operator": "× FILTER.NOISE", "trace": [{"id": "s_005", "text": "uh well I guess we go", "tone_vector": [0.3, 0.4, 0.2]}]}, "output": "Simulated output for module 'echoos_executionnode'"}
