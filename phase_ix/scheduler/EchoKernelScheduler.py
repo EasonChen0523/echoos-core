@@ -25,7 +25,11 @@ MODULE_PATHS = {
     "x_segment": "/phase-vii/x_segment.py",
     "x_smooth": "/phase-vii/x_smooth.py",
     "x_trace_flow": "/phase-vii/x_trace_flow.py",
-    "x_projectn": "/phase-vii/x_projectn.py"
+    "x_projectn": "/phase-vii/x_projectn.py",
+    "x_shrink": "/phase-vii/x_shrink.py",
+    "x_expand": "/phase-vii/x_expand.py",
+    "x_reseal": "/phase-vii/x_reseal.py",
+    "x_highlight": "/phase-vii/x_highlight.py"
 }
 
 def dynamic_import(path):
