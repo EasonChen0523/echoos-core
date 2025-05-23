@@ -1,0 +1,2 @@
+{"input": {"text": "Clearly, the absolutely amazing result was truly unexpected!", "mode": "clean_emotion"}, "cleaned_text": "the result was unexpected!", "removed_noise": ["Clearly,", "absolutely", "amazing", "truly"]}
+{"input": {"text": "Honestly, it was just a pretty good try, nothing more.", "mode": "clean_emotion"}, "cleaned_text": "it was a good try,", "removed_noise": ["Honestly,", "just", "pretty", "nothing", "more."]}

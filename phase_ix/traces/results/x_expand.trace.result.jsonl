@@ -1,0 +1,2 @@
+{"input": {"text": "The mission was difficult, yet they advanced without hesitation.", "mode": "semantic_expand"}, "expanded_text": "The mission was extremely difficult, yet they boldly advanced without hesitation and fear.", "amplified_tokens": ["extremely", "boldly", "fear"]}
+{"input": {"text": "It was a good decision, and the outcome was positive.", "mode": "semantic_expand"}, "expanded_text": "It was a very good decision, and the outcome was highly positive.", "amplified_tokens": ["very", "highly"]}

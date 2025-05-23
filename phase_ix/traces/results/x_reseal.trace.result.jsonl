@@ -1,0 +1,2 @@
+{"input": {"text": "The system failed. No further comment.", "mode": "reseal_coherence"}, "resealed_text": "The system failed, and no further comment was given.", "patched_segments": ["and", "was given"]}
+{"input": {"text": "He left suddenly. No one knew why.", "mode": "reseal_coherence"}, "resealed_text": "He left suddenly, and no one knew why he had to go.", "patched_segments": ["and", "he had to go"]}

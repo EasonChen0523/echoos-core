@@ -1,0 +1,2 @@
+{"input": {"text": "Despite all efforts, the system kept failing without clear reasons.", "mode": "semantic_weight"}, "compressed_text": "Despite efforts, system failing clear", "removed_segments": ["all", "the", "kept", "without", "reasons."], "shrink_score": 0.5}
+{"input": {"text": "She seemed somewhat uncertain, possibly due to fear or indecision.", "mode": "semantic_weight"}, "compressed_text": "She somewhat possibly to or", "removed_segments": ["seemed", "uncertain,", "due", "fear", "indecision."], "shrink_score": 0.5}
