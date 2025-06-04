@@ -1,0 +1,14 @@
+{
+  "trace_id": "sample_trace_001",
+  "input_prompt": "Please explain what semantic imitation means.",
+  "models": ["GPT-4o", "LLaMA-2-7B", "Gemma-3n"],
+  "model_outputs": {
+    "GPT-4o": "Semantic imitation refers to the model mimicking language patterns without true understanding.",
+    "LLaMA-2-7B": "Semantic imitation means producing seemingly reasonable responses lacking causal reasoning.",
+    "Gemma-3n": "Semantic imitation is the generation of seemingly meaningful statements by surface-level pattern matching."
+  },
+  "metadata": {
+    "language": "en",
+    "timestamp": "auto"
+  }
+}
