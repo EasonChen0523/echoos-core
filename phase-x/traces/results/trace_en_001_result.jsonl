@@ -1,0 +1,20 @@
+{
+  "trace_id": "trace_en_001",
+  "timestamp": "2025-06-04T10:23:44Z",
+  "model_outputs": {
+    "GPT-4o": "Semantic imitation refers to the model mimicking language patterns without true understanding.",
+    "LLaMA-2-7B": "Semantic imitation means producing seemingly reasonable responses lacking causal reasoning.",
+    "Gemma-3n": "Semantic imitation is the generation of seemingly meaningful statements by surface-level pattern matching."
+  },
+  "drift_report": {
+    "divergence_score": 0.35,
+    "key_semantic_shift": ["semantic imitation → semantic control"],
+    "conflict_zones": ["conclusion section"]
+  },
+  "verdict": "Partial agreement with divergence in reasoning logic",
+  "metadata": {
+    "note": "Model outputs for LLaMA-2-7B and Gemma-3n are simulated using ChatGPT for semantic structure testing only.",
+    "source": "simulated",
+    "timestamp_source": "simulated by ChatGPT"
+  }
+}
