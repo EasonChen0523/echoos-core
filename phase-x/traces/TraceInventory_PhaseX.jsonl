@@ -1,0 +1,18 @@
+[
+  {
+    "trace_id": "trace_en_001",
+    "input_file": "batch_input/trace_en_001.jsonl",
+    "result_file": "results/trace_en_001_result.jsonl",
+    "language": "en",
+    "model_outputs": ["GPT-4o", "LLaMA-2-7B", "Gemma-3n"],
+    "source": "simulated"
+  },
+  {
+    "trace_id": "trace_en_002",
+    "input_file": "batch_input/trace_en_002.jsonl",
+    "result_file": "results/trace_en_002_result.jsonl",
+    "language": "en",
+    "model_outputs": ["GPT-4o", "LLaMA-2-7B", "Gemma-3n"],
+    "source": "simulated"
+  }
+]
