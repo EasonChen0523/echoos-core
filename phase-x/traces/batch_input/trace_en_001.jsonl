@@ -1,0 +1,7 @@
+{
+  "trace_id": "trace_en_002",
+  "input_prompt": "How do large language models handle ambiguity in prompts?",
+  "models": ["GPT-4o", "LLaMA-2-7B", "Gemma-3n"],
+  "model_outputs": {},
+  "metadata": { "language": "en", "timestamp": "auto" }
+}

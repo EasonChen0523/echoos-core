@@ -1,0 +1,15 @@
+{
+  "trace_id": "trace_en_002",
+  "timestamp": "2025-06-04T11:15:00Z",
+  "model_outputs": {
+    "GPT-4o": "LLMs consider multiple interpretations and rank likely continuations.",
+    "LLaMA-2-7B": "Ambiguity is handled by using context probability and training data patterns.",
+    "Gemma-3n": "They rely on context vectors and previous sequence alignment to resolve ambiguity."
+  },
+  "drift_report": {
+    "divergence_score": 0.4,
+    "key_semantic_shift": ["probabilistic inference vs. context vector modeling"],
+    "conflict_zones": ["resolution mechanisms"]
+  },
+  "verdict": "Divergent mechanisms, overlapping goal (ambiguity resolution)"
+}
