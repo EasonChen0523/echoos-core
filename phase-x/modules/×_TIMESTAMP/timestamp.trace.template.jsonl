@@ -1,0 +1,12 @@
+
+---
+
+## 📄 `timestamp.trace.template.jsonl`
+```json
+{
+  "trace_id": "timestamp_test_001",
+  "input_prompt": "This is a test for timestamp injection.",
+  "metadata": {
+    "timestamp": "auto"
+  }
+}
