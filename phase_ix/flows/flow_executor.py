@@ -5,7 +5,10 @@
 import json
 import os
 import sys
-from scheduler.EchoKernelScheduler import EchoKernelScheduler
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "scheduler"))
+from EchoKernelScheduler import EchoKernelScheduler
 
 def execute_flow(flow_path):
     try:

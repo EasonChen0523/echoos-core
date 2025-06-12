@@ -5,37 +5,41 @@
 import importlib
 import json
 import os
+from pathlib import Path
 
 MODULE_PATHS = {
-    "echoos_kernel": "/core/echoos_kernel.py",
-    "echoos_promptsystem": "/core/echoos_promptsystem.py",
-    "echoos_moduleconfinement": "/core/echoos_moduleconfinement.py",
-    "echoos_modulerecovery": "/core/echoos_modulerecovery.py",
-    "echoos_executionnode": "/core/echoos_executionnode.py",
-    "echoos_crisisdetection": "/core/echoos_crisisdetection.py",
+    "echoos_kernel": "core/echoos_kernel/echoos_kernel.py",
+    "echoos_promptsystem": "core/echoos_promptsystem/echoos_promptsystem.py",
+    "echoos_moduleconfinement": "core/echoos_moduleconfinement/echoos_moduleconfinement.py",
+    "echoos_modulerecovery": "core/echoos_modulerecovery/echoos_modulerecovery.py",
+    "echoos_executionnode": "core/echoos_executionnode/echoos_executionnode.py",
+    "echoos_crisisdetection": "core/echoos_crisisdetection/echoos_crisisdetection.py",
     # Phase VIII
-    "filter_noise": "/phase-viii/filter/x_filter_noise.py",
-    "suppress_noise": "/phase-viii/suppress/x_suppress_noise.py",
-    "histo_balance": "/phase-viii/histo/x_histo_balance.py",
-    "enhance_contrast": "/phase-viii/enhance/x_enhance_contrast.py",
-    "dehaze_tone": "/phase-viii/dehaze/x_dehaze_tone.py",
+    "filter_noise": "phase-viii/filter/x_filter_noise.py",
+    "suppress_noise": "phase-viii/suppress/x_suppress_noise.py",
+    "histo_balance": "phase-viii/histo/x_histo_balance.py",
+    "enhance_contrast": "phase-viii/enhance/x_enhance_contrast.py",
+    "dehaze_tone": "phase-viii/dehaze/x_dehaze_tone.py",
     # Phase VII
-    "x_edge": "/phase-vii/x_edge.py",
-    "x_fuse": "/phase-vii/x_fuse.py",
-    "x_segment": "/phase-vii/x_segment.py",
-    "x_smooth": "/phase-vii/x_smooth.py",
-    "x_trace_flow": "/phase-vii/x_trace_flow.py",
-    "x_projectn": "/phase-vii/x_projectn.py",
-    "x_shrink": "/phase-vii/x_shrink.py",
-    "x_expand": "/phase-vii/x_expand.py",
-    "x_reseal": "/phase-vii/x_reseal.py",
-    "x_highlight": "/phase-vii/x_highlight.py"
+    "x_edge": "phase-vii/edge/x_edge.py",
+    "x_fuse": "phase-vii/fuse_mesh/x_fuse.py",
+    "x_segment": "phase-vii/segment/x_segment.py",
+    "x_smooth": "phase-vii/smooth/x_smooth.py",
+    "x_trace_flow": "phase-vii/trace_flow/x_trace_flow.py",
+    "x_projectn": "phase-vii/project_n/x_projectn.py",
+    "x_shrink": "phase-vii/shrink/x_shrink.py",
+    "x_expand": "phase-vii/expand/x_expand.py",
+    "x_reseal": "phase-vii/reseal/x_reseal.py",
+    "x_highlight": "phase-vii/highlight/x_highlight.py",
 }
+
+BASE_DIR = Path(__file__).resolve().parents[2]
 
 def dynamic_import(path):
     import importlib.util
-    module_name = os.path.splitext(os.path.basename(path))[0]
-    spec = importlib.util.spec_from_file_location(module_name, path)
+    abs_path = (BASE_DIR / path).resolve()
+    module_name = abs_path.stem
+    spec = importlib.util.spec_from_file_location(module_name, abs_path)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod
