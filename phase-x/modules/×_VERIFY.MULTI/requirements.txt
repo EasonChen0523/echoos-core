@@ -1,0 +1,6 @@
+﻿# --- core runtime ---
+tqdm>=4.65              # progress bar
+
+# --- optional (FH-score / embedding cosine) ---
+# Install command：pip install -r requirements.txt[fh] 
+sentence-transformers>=0.7 ; extra == "fh"
