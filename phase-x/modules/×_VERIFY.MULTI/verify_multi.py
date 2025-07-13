@@ -40,13 +40,23 @@ import datetime as dt
 from pathlib import Path
 from typing import List, Dict, Any
 
+
+MODEL_MAP = json.load(open(Path(__file__).resolve().parents[3] / "models" / "model_paths.json"))
+
+
 try:
     from sentence_transformers import SentenceTransformer, util  # optional
 except ImportError:
     SentenceTransformer = None  # type: ignore
 
+def resolve_models(keys):
+    try:
+        return [Path(MODEL_MAP[k]) for k in keys]
+    except KeyError as e:
+        raise ValueError(f"Unknown model key: {e.args[0]}") from None
 
-def run_cli(llama_cli: str, model: Path, prompt: str, n_tokens: int = 256, temp: float = 0.7) -> str:
+
+def run_cli(llama_cli: str, model: Path, prompt: str, n_tokens: int = 256, temp: float = 0.7, ngl: int = 0) -> str:
     """Invoke llama-cli and return the raw stdout string (stripped)."""
     cmd = [
         str(llama_cli),
@@ -55,6 +65,8 @@ def run_cli(llama_cli: str, model: Path, prompt: str, n_tokens: int = 256, temp:
         "-n", str(n_tokens),
         "--temp", str(temp),
         "--no-display-prompt",
+        "--gpu-layers", str(ngl),
+        "-no-cnv",                 # ★ 關閉互動聊天，跑完直接退出
     ]
 
     completed = subprocess.run(
@@ -116,7 +128,9 @@ def process_sample(sample: Dict[str, Any], models: List[Path], args) -> List[Dic
     out: List[Dict[str, Any]] = []
     for model_path in models:
         ts0 = time.perf_counter()
-        resp = run_cli(args.llama_cli, model_path, sample["prompt"], n_tokens=args.n, temp=args.temp)
+        resp = run_cli(args.llama_cli, model_path, sample["prompt"], n_tokens=args.n, temp=args.temp, ngl=args.ngl)
+        
+       
         latency_ms = (time.perf_counter() - ts0) * 1000.0
         record = {
             "id": sample["id"],
@@ -135,22 +149,25 @@ def process_sample(sample: Dict[str, Any], models: List[Path], args) -> List[Dic
 def main() -> None:
     ap = argparse.ArgumentParser(description="Verify consistency across multiple local LLMs via llama-cli")
     ap.add_argument("--input", required=True, help="JSONL file with fields {id, prompt}")
-    ap.add_argument("--models", nargs="+", required=True, help="One or more GGUF model paths")
+    ap.add_argument("--models", nargs="+", choices=list(MODEL_MAP), required=True, help="Model keys defined in model_paths.json")
     ap.add_argument("--llama-cli", required=True, help="Path to llama-cli executable")
     ap.add_argument("--output", default="verify_multi_out", help="Output directory")
     ap.add_argument("-n", type=int, default=256, help="Max tokens to generate per model")
     ap.add_argument("--temp", type=float, default=0.7, help="Sampling temperature")
     ap.add_argument("--compare-similarity", action="store_true", help="Compute cosine similarity between first two model outputs (needs sentence-transformers)")
+    ap.add_argument("--ngl", type=int, default=43,help="Number of GPU layers to off-load (llama-cli --gpu-layers)")
+
     args = ap.parse_args()
 
     input_path = Path(args.input)
     if not input_path.exists():
         raise FileNotFoundError(input_path)
 
-    models = [Path(m) for m in args.models]
-    for m in models:
-        if not m.exists():
-            raise FileNotFoundError(m)
+
+    model_paths = resolve_models(args.models)          # ← 取代舊 models
+    for p in model_paths:
+        if not p.exists():
+            raise FileNotFoundError(p)
 
     out_dir = Path(args.output)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -162,7 +179,7 @@ def main() -> None:
                 continue
             sample = json.loads(line)
             try:
-                records = process_sample(sample, models, args)
+                records = process_sample(sample, model_paths, args)
                 for rec in records:
                     combined_out.write(json.dumps(rec, ensure_ascii=False) + "\n")
                     # Also write per-model raw output if needed

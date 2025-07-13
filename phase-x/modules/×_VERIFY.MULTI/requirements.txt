@@ -1,6 +1,6 @@
-﻿# --- core runtime ---
-tqdm>=4.65              # progress bar
+﻿# Core runtime dependencies
+tqdm>=4.67
+sentencepiece>=0.2.0
 
-# --- optional (FH-score / embedding cosine) ---
-# Install command：pip install -r requirements.txt[fh] 
-sentence-transformers>=0.7 ; extra == "fh"
+# Optional: enable --compare-similarity (cosine distance via SBERT)
+# sentence-transformers>=0.6.0

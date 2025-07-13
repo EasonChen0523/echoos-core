@@ -1,35 +1,25 @@
-# × VERIFY.MULTI – EchoOS Phase X
+# × VERIFY.MULTI – Offline Multi-Model Verifier
 
-> **Run one prompt set through multiple local LLM models and check consistency**
+Runs the same **trace JSONL** through any number of `llama-cli` GGUF models,  
+optionally measures response similarity, and writes the results back to
+`*.jsonl`.
 
 ---
 
-## Features
+## ✨ 2025-07 update
 
-* CLI wrapper around **`llama-cli`** for batch inference
-* Supports **any number of `.gguf` models** in one run
-* Logs per-model JSON, plus a `results.jsonl` summary
-* Built-in similarity metrics  
-  * **Jaccard token overlap** (always on)  
-  * **FH-score** (embedding cosine – optional, needs `sentence-transformers`)
-* Windows / Linux tested, Python ≥ 3.10
+| Change | Details |
+| ------ | ------- |
+| **Central model map** | `models/model_paths.json` stores *model-key → file path* |
+| **New flag** `--ngl` | Maps to `llama-cli --gpu-layers` (CUDA/Metal off-load) |
+| **No chat hang-ups** | `-no-cnv` is injected automatically to skip interactive mode |
+| **Gemma 3-4B-it support** | Tested with `Q4_K_M` (≈ 2.3 GiB, 5-7 tok/s on RTX 4060) |
 
-## Quick start
+---
+
+## Installation
 
 ```bash
-# ① install deps
-python -m pip install -r requirements.txt
-
-# ② run
-python verify_multi.py \
-  --input   ../../traces/dev/trace_smoke.jsonl \
-  --models  D:/models/llama/llama-2-7b.Q4_K_M.gguf \
-            D:/models/llama/gemma-2b.Q4_K_M.gguf \
-  --llama-cli "D:/models/llama-bin/llama-cli.exe" \
-  --n-tokens 128 --temp 0.7 \
-  --output  ../../results/dev_run
-
-If your llama-cli < b5500, use --skip-json or upgrade to get structured output.
-
-#3 update
-Old version llama-cli→stderr Merge、build-in filtering noise
+pip install -r requirements.txt          # tqdm + sentencepiece
+# For similarity scoring (optional)
+pip install sentence-transformers
