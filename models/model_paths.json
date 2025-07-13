@@ -1,0 +1,4 @@
+{
+  "llama2-7b":  "D:/models/Llama-2-7B-Chat-GGUF/llama-2-7b-chat.Q4_K_M.gguf",
+  "gemma3n-4b": "D:/models/gemma3n-4bit/gemma-3-4b-it.Q4_K_M.gguf"
+}
