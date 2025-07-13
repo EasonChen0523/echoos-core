@@ -40,6 +40,14 @@ import datetime as dt
 from pathlib import Path
 from typing import List, Dict, Any
 
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[3]   # <echoos-core>
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+    
+from x_timestamp.timestamp_util import now, iso
 
 MODEL_MAP = json.load(open(Path(__file__).resolve().parents[3] / "models" / "model_paths.json"))
 
@@ -137,7 +145,7 @@ def process_sample(sample: Dict[str, Any], models: List[Path], args) -> List[Dic
             "model": model_path.name,
             "response": resp,
             "latency_ms": round(latency_ms, 1),
-            "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+            "timestamp": iso(now()),
         }
         out.append(record)
     # optional similarity between first two models
