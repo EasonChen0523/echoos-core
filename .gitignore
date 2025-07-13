@@ -1,0 +1,9 @@
+# virtual env
+.venv/
+
+# verify / results folders
+verify_multi_out/
+phase-x/results/
+
+# local trace copies
+phase-x/traces/dev/
